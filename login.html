@@ -1,144 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>VINN | Login</title>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>VINN Login</title>
+
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+
     body {
+
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       background:
-        radial-gradient(circle at top right, #fff0f0, transparent 35%),
-        linear-gradient(135deg, #ffffff, #fff7f7);
+        linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #fff7f7 100%
+        );
 
       display: flex;
+
       justify-content: center;
+
       align-items: center;
 
       color: #171717;
+
     }
 
-    .page {
+
+    .container {
+
       width: 100%;
-      max-width: 450px;
-      padding: 22px;
+
+      max-width: 430px;
+
+      padding: 25px;
+
     }
 
-    /*
 
-    =========================
-       BRAND
+    /* =========================
+       LOGO
     ========================= */
 
-    .brand-section {
+    .logo-area {
+
       text-align: center;
-      margin-bottom: 25px;
 
-      opacity: 0;
-      transform: translateY(-20px);
+      margin-bottom: 28px;
 
-      animation: brandIn 0.8s ease forwards;
     }
+
 
     .logo {
-      width: 95px;
-      height: 95px;
+
+      width: 110px;
+
+      height: 110px;
+
       object-fit: contain;
-      margin-bottom: 8px;
 
-      animation: floating 3s ease-in-out infinite;
+      display: block;
+
+      margin: 0 auto 12px auto;
+
+      animation: floatLogo 3s ease-in-out infinite;
+
     }
 
-    .brand-name {
-      font-size: 32px;
+
+    .brand {
+
+      font-size: 34px;
+
       font-weight: 900;
-      letter-spacing: 5px;
+
+      letter-spacing: 6px;
+
     }
 
-    .brand-description {
+
+    .subtitle {
+
       margin-top: 7px;
 
       color: #888;
 
       font-size: 11px;
+
       font-weight: 600;
 
       letter-spacing: 1.5px;
+
       text-transform: uppercase;
+
     }
+
 
     /* =========================
-       LOGIN CARD
+       LOGIN BOX
     ========================= */
 
-    .login-card {
+    .login-box {
+
       background: #ffffff;
 
-      border-radius: 24px;
+      border-radius: 22px;
 
-      padding: 30px 25px;
+      padding: 30px 24px;
 
       box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.10);
+        0 15px 40px
+        rgba(0, 0, 0, 0.10);
 
-      opacity: 0;
-      transform: translateY(25px);
+      animation: slideUp 0.7s ease;
 
-      animation: cardIn 0.8s ease 0.25s forwards;
     }
 
-    .login-title {
+
+    .login-box h2 {
+
       font-size: 25px;
-      font-weight: 800;
 
-      margin-bottom: 7px;
+      margin-bottom: 8px;
+
     }
 
-    .login-description {
+
+    .welcome-text {
+
       color: #777;
 
       font-size: 13px;
 
-      margin-bottom: 28px;
+      margin-bottom: 25px;
+
     }
+
 
     /* =========================
        INPUTS
     ========================= */
 
-    .input-group {
+    .field {
+
       margin-bottom: 18px;
+
     }
 
-    label {
+
+    .field label {
+
       display: block;
 
       font-size: 13px;
+
       font-weight: 700;
 
       margin-bottom: 8px;
+
     }
 
-    .input-wrapper {
-      position: relative;
-    }
 
-    input {
+    .field input {
+
       width: 100%;
+
       height: 52px;
 
-      border: 1px solid #e2e2e2;
+      border: 1px solid #dedede;
 
-      border-radius: 13px;
+      border-radius: 12px;
 
       padding: 0 15px;
 
@@ -146,35 +199,46 @@
 
       outline: none;
 
-      background: #ffffff;
-
       transition: 0.2s;
+
     }
 
-    input:focus {
+
+    .field input:focus {
+
       border-color: #e31e24;
 
       box-shadow:
-        0 0 0 3px rgba(227, 30, 36, 0.10);
+        0 0 0 3px
+        rgba(227, 30, 36, 0.10);
+
     }
 
-    input.error {
-      border-color: #e31e24;
-    }
 
-    /*
-    =========================
+    /* =========================
        PASSWORD
     ========================= */
 
-    .password-input {
-      padding-right: 65px;
+    .password-container {
+
+      position: relative;
+
     }
 
-    .show-password {
+
+    .password-container input {
+
+      padding-right: 65px;
+
+    }
+
+
+    .show-button {
+
       position: absolute;
 
-      right: 15px;
+      right: 13px;
+
       top: 50%;
 
       transform: translateY(-50%);
@@ -186,108 +250,114 @@
       color: #e31e24;
 
       font-size: 11px;
+
       font-weight: 800;
 
       cursor: pointer;
+
     }
+
 
     /* =========================
        FORGOT PASSWORD
     ========================= */
 
-    .forgot-row {
-      display: flex;
-
-      justify-content: flex-end;
-
-      margin-top: -4px;
-
-      margin-bottom: 23px;
-    }
-
     .forgot {
-      color: #e31e24;
 
-      text-decoration: none;
+      display: block;
+
+      text-align: right;
+
+      color: #e31e24;
 
       font-size: 12px;
 
       font-weight: 700;
+
+      text-decoration: none;
+
+      margin-top: -5px;
+
+      margin-bottom: 22px;
+
     }
 
+
     .forgot:hover {
+
       text-decoration: underline;
+
     }
+
 
     /* =========================
        LOGIN BUTTON
     ========================= */
 
     .login-button {
+
       width: 100%;
+
       height: 53px;
 
       border: none;
 
-      border-radius: 13px;
+      border-radius: 12px;
 
       background: #e31e24;
 
       color: #ffffff;
 
       font-size: 16px;
+
       font-weight: 800;
 
       cursor: pointer;
 
       transition: 0.2s;
 
-      position: relative;
-
-      overflow: hidden;
     }
+
 
     .login-button:hover {
+
       background: #c9151b;
 
-      transform: translateY(-1px);
     }
+
 
     .login-button:active {
+
       transform: scale(0.98);
+
     }
 
-    .login-button.loading {
-      pointer-events: none;
-      opacity: 0.8;
-    }
 
     /* =========================
-       ERROR MESSAGE
+       MESSAGE
     ========================= */
 
-    .error-message {
+    .message {
+
       display: none;
 
-      color: #e31e24;
+      text-align: center;
+
+      margin-top: 15px;
 
       font-size: 12px;
 
-      margin-top: 12px;
+      color: #e31e24;
 
-      text-align: center;
     }
 
-    .error-message.show {
-      display: block;
-    }
 
-    /*
-    =========================
+    /* =========================
        FOOTER
     ========================= */
 
     .footer {
+
       text-align: center;
 
       color: #999;
@@ -295,81 +365,62 @@
       font-size: 11px;
 
       margin-top: 22px;
+
     }
 
-    /* =========================
-       LOADING SPINNER
-    ========================= */
-
-    .spinner {
-      width: 18px;
-      height: 18px;
-
-      border: 2px solid rgba(255, 255, 255, 0.4);
-
-      border-top-color: #ffffff;
-
-      border-radius: 50%;
-
-      display: none;
-
-      margin: auto;
-
-      animation: spin 0.7s linear infinite;
-    }
-
-    .login-button.loading .button-text {
-      display: none;
-    }
-
-    .login-button.loading .spinner {
-      display: block;
-    }
 
     /* =========================
        ANIMATIONS
     ========================= */
 
-    @keyframes brandIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
+    @keyframes floatLogo {
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+      0% {
 
-    @keyframes cardIn {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
+        transform:
+          translateY(0);
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes floating {
-      0%,
-      100% {
-        transform: translateY(0);
       }
 
       50% {
-        transform: translateY(-6px);
+
+        transform:
+          translateY(-7px);
+
       }
+
+      100% {
+
+        transform:
+          translateY(0);
+
+      }
+
     }
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
+
+    @keyframes slideUp {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(25px);
+
       }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+
+      }
+
     }
+
 
     /* =========================
        MOBILE
@@ -377,41 +428,51 @@
 
     @media (max-width: 480px) {
 
-      .page {
+      .container {
+
         padding: 18px;
+
       }
+
 
       .logo {
-        width: 82px;
-        height: 82px;
+
+        width: 90px;
+
+        height: 90px;
+
       }
 
-      .brand-name {
-        font-size: 28px;
+
+      .brand {
+
+        font-size: 29px;
+
       }
 
-      .login-card {
+
+      .login-box {
+
         padding: 27px 20px;
-        border-radius: 21px;
+
       }
 
-      .login-title {
-        font-size: 23px;
-      }
     }
+
   </style>
+
 </head>
 
 
 <body>
 
-  <div class="page">
 
-    <!-- =========================
-         VINN BRAND
-    ========================== -->
+  <div class="container">
 
-    <div class="brand-section">
+
+    <!-- VINN BRAND -->
+
+    <div class="logo-area">
 
       <img
         class="logo"
@@ -419,79 +480,76 @@
         alt="VINN Fuel Station Logo"
       >
 
-      <div class="brand-name">
+      <div class="brand">
         VINN
       </div>
 
-      <div class="brand-description">
+      <div class="subtitle">
         Petrol Station Management
       </div>
 
     </div>
 
 
-    <!-- =========================
-         LOGIN CARD
-    ========================== -->
+    <!-- LOGIN BOX -->
 
-    <div class="login-card">
+    <div class="login-box">
 
-      <h1 class="login-title">
+      <h2>
         Welcome Back
-      </h1>
+      </h2>
 
-      <p class="login-description">
-        Sign in to access your station management system.
+      <p class="welcome-text">
+        Sign in to continue to your VINN dashboard.
       </p>
 
 
-      <form id="loginForm">
+      <form
+        id="loginForm"
+        onsubmit="login(event)"
+      >
 
 
         <!-- EMAIL -->
 
-        <div class="input-group">
+        <div class="field">
 
           <label for="email">
             Email Address
           </label>
 
-          <div class="input-wrapper">
-
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email"
-              autocomplete="email"
-              required
-            >
-
-          </div>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          >
 
         </div>
- <!-- PASSWORD -->
 
-        <div class="input-group">
+
+        <!-- PASSWORD -->
+
+        <div class="field">
 
           <label for="password">
             Password
           </label>
 
-          <div class="input-wrapper">
+          <div class="password-container">
 
             <input
               type="password"
               id="password"
-              class="password-input"
               placeholder="Enter your password"
-              autocomplete="current-password"
               required
             >
 
             <button
               type="button"
-              class="show-password"
-              id="showPassword"
+              class="show-button"
+              onclick="showPassword()"
+              id="showButton"
             >
               SHOW
             </button>
@@ -503,42 +561,30 @@
 
         <!-- FORGOT PASSWORD -->
 
-        <div class="forgot-row">
-
-          <a
-            href="#"
-            class="forgot"
-            onclick="forgotPassword(event)"
-          >
-            Forgot password?
-          </a>
-
-        </div>
+        <a
+          href="#"
+          class="forgot"
+          onclick="forgotPassword(event)"
+        >
+          Forgot password?
+        </a>
 
 
-        <!-- LOGIN BUTTON -->
+        <!-- SIGN IN -->
 
         <button
           type="submit"
           class="login-button"
-          id="loginButton"
         >
-
-          <span class="button-text">
-            Sign In
-          </span>
-
-          <span class="spinner"></span>
-
+          Sign In
         </button>
 
 
-        <!-- ERROR -->
-
         <div
-          class="error-message"
-          id="errorMessage"
+          class="message"
+          id="message"
         ></div>
+
 
       </form>
 
@@ -548,134 +594,130 @@
     <!-- FOOTER -->
 
     <div class="footer">
+
       © 2026 VINN. All rights reserved.
+
     </div>
+
 
   </div>
 
 
   <script>
 
+
     /* =========================
        SHOW / HIDE PASSWORD
-    ========================== */
+    ========================= */
 
-    const password =
-      document.getElementById("password");
+    function showPassword() {
 
-    const showPassword =
-      document.getElementById("showPassword");
+      const password =
+        document.getElementById("password");
+
+      const button =
+        document.getElementById("showButton");
 
 
-    showPassword.addEventListener("click", function () {
-
-      if (password.type === "password") {
+      if (
+        password.type === "password"
+      ) {
 
         password.type = "text";
 
-        showPassword.textContent = "HIDE";
-
-      } else {
-
-        password.type = "password";
-
-        showPassword.textContent = "SHOW";
+        button.textContent = "HIDE";
 
       }
 
-    });
+      else {
+
+        password.type = "password";
+
+        button.textContent = "SHOW";
+
+      }
+
+    }
 
 
     /* =========================
        LOGIN
-    ========================== */
+    ========================= */
 
-    const loginForm =
-      document.getElementById("loginForm");
-
-    const loginButton =
-      document.getElementById("loginButton");
-
-    const errorMessage =
-      document.getElementById("errorMessage");
-
-
-    loginForm.addEventListener("submit", function (event) {
+    function login(event) {
 
       event.preventDefault();
+
 
       const email =
         document.getElementById("email").value.trim();
 
-      const passwordValue =
-        password.value.trim();
+      const password =
+        document.getElementById("password").value.trim();
+
+      const message =
+        document.getElementById("message");
 
 
-      errorMessage.classList.remove("show");
+      if (
+        email === "" ||
+        password === ""
+      ) {
 
-      errorMessage.textContent = "";
-
-
-      /* Basic validation */
-
-      if (email === "" || passwordValue === "") {
-
-        errorMessage.textContent =
+        message.textContent =
           "Please enter your email and password.";
 
-        errorMessage.classList.add("show");
+        message.style.display = "block";
 
         return;
+
       }
-
-
-      /* Start loading */
-
-      loginButton.classList.add("loading");
 
 
       /*
         DEMO LOGIN
 
-        This is only the front-end for now.
-
-        Later we will connect VINN to a real
-        authentication/backend system.
+        We will connect this to the
+        real VINN authentication system later.
       */
 
-      setTimeout(function () {
+      message.style.color = "#16803c";
 
-        loginButton.classList.remove("loading");
+      message.textContent =
+        "Login successful.";
 
-        /*
-          When the dashboard is created,
-          this will open dashboard.html.
-        */
+      message.style.display = "block";
 
-        window.location.href = "dashboard.html";
 
-      }, 1200);
+      /*
+        Dashboard will be connected
+        after we create dashboard.html.
 
-    });
+        DO NOT redirect yet.
+      */
+
+    }
 
 
     /* =========================
        FORGOT PASSWORD
-    ========================== */
+    ========================= */
 
     function forgotPassword(event) {
 
       event.preventDefault();
 
+
       alert(
-        "Password recovery will be connected later."
+        "Password recovery will be added later."
       );
 
     }
 
+
   </script>
 
+
 </body>
-          </html>
-        
-    
+
+  </html>
