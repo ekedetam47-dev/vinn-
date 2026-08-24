@@ -360,30 +360,13 @@
   </main>
 
 
-  <script>
+<script>
+  setTimeout(function () {
 
-    /*
-      Splash screen lasts 10 seconds.
-    */
-    setTimeout(() => {
-  document.getElementById("splash").classList.add("fade-out");
-
-  setTimeout(() => {
     window.location.href = "login.html";
-  }, 800);
 
-}, 10000);
-      /*
-        When we create login.html,
-        change this to:
-
-        window.location.href = "login.html";
-
-      */
-
-    }, 10000);
-
-  </script>
+  }, 10000);
+</script>
 
 </body>
 </html>
