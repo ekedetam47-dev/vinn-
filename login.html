@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VINN | Login</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #ffffff, #fff4f4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #171717;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 430px;
+      padding: 25px;
+    }
+
+    /* Logo */
+
+    .logo-section {
+      text-align: center;
+      margin-bottom: 30px;
+      animation: fadeDown 0.8s ease;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .brand {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 5px;
+    }
+
+    .brand-subtitle {
+      margin-top: 6px;
+      color: #888;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* Login Card */
+
+    .login-card {
+      background: #ffffff;
+      padding: 30px 25px;
+      border-radius: 24px;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.10);
+      animation: fadeUp 0.8s ease;
+    }
+
+    .login-card h2 {
+      font-size: 25px;
+      margin-bottom: 7px;
+    }
+
+    .welcome {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    /* Form */
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      height: 52px;
+      border: 1px solid #e2e2e2;
+      border-radius: 13px;
+      padding: 0 15px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    input:focus {
+      border-color: #e31e24;
+      box-shadow: 0 0 0 3px rgba(227, 30, 36, 0.10);
+    }
+
+    /* Password */
+
+    .password-box {
+      position: relative;
+    }
+
+    .password-box input {
+      padding-right: 65px;
+    }
+
+    .show-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      color: #e31e24;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Forgot password */
+
+    .forgot {
+      display: block;
+      text-align: right;
+      margin-top: -7px;
+      margin-bottom: 22px;
+      color: #e31e24;
+      font-size: 12px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Login button */
+
+    .login-btn {
+      width: 100%;
+      height: 53px;
+      border: none;
+      border-radius: 13px;
+      background: #e31e24;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .login-btn:hover {
+      background: #c9151b;
+      transform: translateY(-1px);
+    }
+
+    .login-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Footer */
+
+    .footer {
+      text-align: center;
+      margin-top: 22px;
+      color: #999;
+      font-size: 11px;
+    }
+
+    /* Animations */
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 480px) {
+
+      .login-container {
+        padding: 18px;
+      }
+
+      .login-card {
+        padding: 26px 20px;
+      }
+
+      .logo {
+        width: 85px;
+        height: 85px;
+      }
+
+      .brand {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-container">
+
+    <!-- VINN Logo -->
+
+    <div class="logo-section">
+
+      <img
+        class="logo"
+        src="c50c620324b6e91563816604f0eb9dd0.jpg"
+        alt="VINN Fuel Station Logo"
+      >
+
+      <div class="brand">
+        VINN
+      </div>
+
+      <div class="brand-subtitle">
+        PETROL STATION MANAGEMENT
+      </div>
+
+    </div>
+
+
+    <!-- Login -->
+
+    <div class="login-card">
+
+      <h2>Welcome Back</h2>
+
+      <p class="welcome">
+        Sign in to manage your station
+      </p>
+
+
+      <form onsubmit="login(event)">
+
+        <!-- Email -->
+
+        <div class="input-group">
+
+          <label for="email">
+            Email Address
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          >
+
+        </div>
+
+
+        <!-- Password -->
+
+        <div class="input-group">
+
+          <label for="password">
+            Password
+          </label>
+
+          <div class="password-box">
+
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            >
+
+            <button
+              type="button"
+              class="show-password"
+              onclick="togglePassword()"
+              id="showButton"
+            >
+              SHOW
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Forgot Password -->
+
+        <a href="#" class="forgot">
+          Forgot password?
+        </a>
+
+
+        <!-- Login -->
+
+        <button
+          type="submit"
+          class="login-btn"
+        >
+          Sign In
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <div class="footer">
+      © 2026 VINN. All rights reserved.
+    </div>
+
+  </div>
+
+
+  <script>
+
+    /* Show / Hide Password */
+
+    function togglePassword() {
+
+      const password =
+        document.getElementById("password");
+
+      const button =
+        document.getElementById("showButton");
+
+      if (password.type === "password") {
+
+        password.type = "text";
+
+        button.textContent = "HIDE";
+
+      } else {
+
+        password.type = "password";
+
+        button.textContent = "SHOW";
+
+      }
+
+    }
+
+
+    /* Login */
+
+    function login(event) {
+
+      event.preventDefault();
+
+      /*
+        For now this only demonstrates
+        that the login button works.
+
+        Later we will connect this to
+        your real authentication system.
+      */
+
+      alert("Login button works!");
+
+    }
+
+  </script>
+
+</body>
+  </html>
