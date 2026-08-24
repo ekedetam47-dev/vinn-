@@ -16,69 +16,104 @@
     body {
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #ffffff, #fff4f4);
+      background:
+        radial-gradient(circle at top right, #fff0f0, transparent 35%),
+        linear-gradient(135deg, #ffffff, #fff7f7);
+
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+
       color: #171717;
     }
 
-    .login-container {
+    .page {
       width: 100%;
-      max-width: 430px;
-      padding: 25px;
+      max-width: 450px;
+      padding: 22px;
     }
 
-    /* Logo */
+    /*
 
-    .logo-section {
+    =========================
+       BRAND
+    ========================= */
+
+    .brand-section {
       text-align: center;
-      margin-bottom: 30px;
-      animation: fadeDown 0.8s ease;
+      margin-bottom: 25px;
+
+      opacity: 0;
+      transform: translateY(-20px);
+
+      animation: brandIn 0.8s ease forwards;
     }
 
     .logo {
-      width: 100px;
-      height: 100px;
+      width: 95px;
+      height: 95px;
       object-fit: contain;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+
+      animation: floating 3s ease-in-out infinite;
     }
 
-    .brand {
+    .brand-name {
       font-size: 32px;
       font-weight: 900;
       letter-spacing: 5px;
     }
 
-    .brand-subtitle {
-      margin-top: 6px;
+    .brand-description {
+      margin-top: 7px;
+
       color: #888;
-      font-size: 12px;
-      letter-spacing: 1px;
+
+      font-size: 11px;
+      font-weight: 600;
+
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
-    /* Login Card */
+    /* =========================
+       LOGIN CARD
+    ========================= */
 
     .login-card {
       background: #ffffff;
-      padding: 30px 25px;
+
       border-radius: 24px;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.10);
-      animation: fadeUp 0.8s ease;
+
+      padding: 30px 25px;
+
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.10);
+
+      opacity: 0;
+      transform: translateY(25px);
+
+      animation: cardIn 0.8s ease 0.25s forwards;
     }
 
-    .login-card h2 {
+    .login-title {
       font-size: 25px;
+      font-weight: 800;
+
       margin-bottom: 7px;
     }
 
-    .welcome {
+    .login-description {
       color: #777;
-      font-size: 14px;
+
+      font-size: 13px;
+
       margin-bottom: 28px;
     }
 
-    /* Form */
+    /* =========================
+       INPUTS
+    ========================= */
 
     .input-group {
       margin-bottom: 18px;
@@ -86,102 +121,219 @@
 
     label {
       display: block;
+
       font-size: 13px;
       font-weight: 700;
+
       margin-bottom: 8px;
+    }
+
+    .input-wrapper {
+      position: relative;
     }
 
     input {
       width: 100%;
       height: 52px;
+
       border: 1px solid #e2e2e2;
+
       border-radius: 13px;
+
       padding: 0 15px;
+
       font-size: 15px;
+
       outline: none;
+
+      background: #ffffff;
+
       transition: 0.2s;
     }
 
     input:focus {
       border-color: #e31e24;
-      box-shadow: 0 0 0 3px rgba(227, 30, 36, 0.10);
+
+      box-shadow:
+        0 0 0 3px rgba(227, 30, 36, 0.10);
     }
 
-    /* Password */
-
-    .password-box {
-      position: relative;
+    input.error {
+      border-color: #e31e24;
     }
 
-    .password-box input {
+    /*
+    =========================
+       PASSWORD
+    ========================= */
+
+    .password-input {
       padding-right: 65px;
     }
 
     .show-password {
       position: absolute;
+
       right: 15px;
       top: 50%;
+
       transform: translateY(-50%);
+
       border: none;
-      background: none;
+
+      background: transparent;
+
       color: #e31e24;
-      font-size: 12px;
-      font-weight: 700;
+
+      font-size: 11px;
+      font-weight: 800;
+
       cursor: pointer;
     }
 
-    /* Forgot password */
+    /* =========================
+       FORGOT PASSWORD
+    ========================= */
+
+    .forgot-row {
+      display: flex;
+
+      justify-content: flex-end;
+
+      margin-top: -4px;
+
+      margin-bottom: 23px;
+    }
 
     .forgot {
-      display: block;
-      text-align: right;
-      margin-top: -7px;
-      margin-bottom: 22px;
       color: #e31e24;
-      font-size: 12px;
+
       text-decoration: none;
-      font-weight: 600;
+
+      font-size: 12px;
+
+      font-weight: 700;
     }
 
-    /* Login button */
+    .forgot:hover {
+      text-decoration: underline;
+    }
 
-    .login-btn {
+    /* =========================
+       LOGIN BUTTON
+    ========================= */
+
+    .login-button {
       width: 100%;
       height: 53px;
+
       border: none;
+
       border-radius: 13px;
+
       background: #e31e24;
-      color: white;
+
+      color: #ffffff;
+
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 800;
+
       cursor: pointer;
+
       transition: 0.2s;
+
+      position: relative;
+
+      overflow: hidden;
     }
 
-    .login-btn:hover {
+    .login-button:hover {
       background: #c9151b;
+
       transform: translateY(-1px);
     }
 
-    .login-btn:active {
+    .login-button:active {
       transform: scale(0.98);
     }
 
-    /* Footer */
+    .login-button.loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    /* =========================
+       ERROR MESSAGE
+    ========================= */
+
+    .error-message {
+      display: none;
+
+      color: #e31e24;
+
+      font-size: 12px;
+
+      margin-top: 12px;
+
+      text-align: center;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    /*
+    =========================
+       FOOTER
+    ========================= */
 
     .footer {
       text-align: center;
-      margin-top: 22px;
+
       color: #999;
+
       font-size: 11px;
+
+      margin-top: 22px;
     }
 
-    /* Animations */
+    /* =========================
+       LOADING SPINNER
+    ========================= */
 
-    @keyframes fadeDown {
+    .spinner {
+      width: 18px;
+      height: 18px;
+
+      border: 2px solid rgba(255, 255, 255, 0.4);
+
+      border-top-color: #ffffff;
+
+      border-radius: 50%;
+
+      display: none;
+
+      margin: auto;
+
+      animation: spin 0.7s linear infinite;
+    }
+
+    .login-button.loading .button-text {
+      display: none;
+    }
+
+    .login-button.loading .spinner {
+      display: block;
+    }
+
+    /* =========================
+       ANIMATIONS
+    ========================= */
+
+    @keyframes brandIn {
       from {
         opacity: 0;
-        transform: translateY(-25px);
+        transform: translateY(-20px);
       }
 
       to {
@@ -190,7 +342,7 @@
       }
     }
 
-    @keyframes fadeUp {
+    @keyframes cardIn {
       from {
         opacity: 0;
         transform: translateY(25px);
@@ -202,37 +354,64 @@
       }
     }
 
-    /* Mobile */
+    @keyframes floating {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 480px) {
 
-      .login-container {
+      .page {
         padding: 18px;
       }
 
-      .login-card {
-        padding: 26px 20px;
-      }
-
       .logo {
-        width: 85px;
-        height: 85px;
+        width: 82px;
+        height: 82px;
       }
 
-      .brand {
+      .brand-name {
         font-size: 28px;
+      }
+
+      .login-card {
+        padding: 27px 20px;
+        border-radius: 21px;
+      }
+
+      .login-title {
+        font-size: 23px;
       }
     }
   </style>
 </head>
 
+
 <body>
 
-  <div class="login-container">
+  <div class="page">
 
-    <!-- VINN Logo -->
+    <!-- =========================
+         VINN BRAND
+    ========================== -->
 
-    <div class="logo-section">
+    <div class="brand-section">
 
       <img
         class="logo"
@@ -240,31 +419,36 @@
         alt="VINN Fuel Station Logo"
       >
 
-      <div class="brand">
+      <div class="brand-name">
         VINN
       </div>
 
-      <div class="brand-subtitle">
-        PETROL STATION MANAGEMENT
+      <div class="brand-description">
+        Petrol Station Management
       </div>
 
     </div>
 
 
-    <!-- Login -->
+    <!-- =========================
+         LOGIN CARD
+    ========================== -->
 
     <div class="login-card">
 
-      <h2>Welcome Back</h2>
+      <h1 class="login-title">
+        Welcome Back
+      </h1>
 
-      <p class="welcome">
-        Sign in to manage your station
+      <p class="login-description">
+        Sign in to access your station management system.
       </p>
 
 
-      <form onsubmit="login(event)">
+      <form id="loginForm">
 
-        <!-- Email -->
+
+        <!-- EMAIL -->
 
         <div class="input-group">
 
@@ -272,17 +456,20 @@
             Email Address
           </label>
 
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-          >
+          <div class="input-wrapper">
+
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              autocomplete="email"
+              required
+            >
+
+          </div>
 
         </div>
-
-
-        <!-- Password -->
+ <!-- PASSWORD -->
 
         <div class="input-group">
 
@@ -290,20 +477,21 @@
             Password
           </label>
 
-          <div class="password-box">
+          <div class="input-wrapper">
 
             <input
               type="password"
               id="password"
+              class="password-input"
               placeholder="Enter your password"
+              autocomplete="current-password"
               required
             >
 
             <button
               type="button"
               class="show-password"
-              onclick="togglePassword()"
-              id="showButton"
+              id="showPassword"
             >
               SHOW
             </button>
@@ -313,26 +501,51 @@
         </div>
 
 
-        <!-- Forgot Password -->
+        <!-- FORGOT PASSWORD -->
 
-        <a href="#" class="forgot">
-          Forgot password?
-        </a>
+        <div class="forgot-row">
+
+          <a
+            href="#"
+            class="forgot"
+            onclick="forgotPassword(event)"
+          >
+            Forgot password?
+          </a>
+
+        </div>
 
 
-        <!-- Login -->
+        <!-- LOGIN BUTTON -->
 
         <button
           type="submit"
-          class="login-btn"
+          class="login-button"
+          id="loginButton"
         >
-          Sign In
+
+          <span class="button-text">
+            Sign In
+          </span>
+
+          <span class="spinner"></span>
+
         </button>
+
+
+        <!-- ERROR -->
+
+        <div
+          class="error-message"
+          id="errorMessage"
+        ></div>
 
       </form>
 
     </div>
 
+
+    <!-- FOOTER -->
 
     <div class="footer">
       © 2026 VINN. All rights reserved.
@@ -343,52 +556,126 @@
 
   <script>
 
-    /* Show / Hide Password */
+    /* =========================
+       SHOW / HIDE PASSWORD
+    ========================== */
 
-    function togglePassword() {
+    const password =
+      document.getElementById("password");
 
-      const password =
-        document.getElementById("password");
+    const showPassword =
+      document.getElementById("showPassword");
 
-      const button =
-        document.getElementById("showButton");
+
+    showPassword.addEventListener("click", function () {
 
       if (password.type === "password") {
 
         password.type = "text";
 
-        button.textContent = "HIDE";
+        showPassword.textContent = "HIDE";
 
       } else {
 
         password.type = "password";
 
-        button.textContent = "SHOW";
+        showPassword.textContent = "SHOW";
 
       }
 
-    }
+    });
 
 
-    /* Login */
+    /* =========================
+       LOGIN
+    ========================== */
 
-    function login(event) {
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const loginButton =
+      document.getElementById("loginButton");
+
+    const errorMessage =
+      document.getElementById("errorMessage");
+
+
+    loginForm.addEventListener("submit", function (event) {
 
       event.preventDefault();
 
-      /*
-        For now this only demonstrates
-        that the login button works.
+      const email =
+        document.getElementById("email").value.trim();
 
-        Later we will connect this to
-        your real authentication system.
+      const passwordValue =
+        password.value.trim();
+
+
+      errorMessage.classList.remove("show");
+
+      errorMessage.textContent = "";
+
+
+      /* Basic validation */
+
+      if (email === "" || passwordValue === "") {
+
+        errorMessage.textContent =
+          "Please enter your email and password.";
+
+        errorMessage.classList.add("show");
+
+        return;
+      }
+
+
+      /* Start loading */
+
+      loginButton.classList.add("loading");
+
+
+      /*
+        DEMO LOGIN
+
+        This is only the front-end for now.
+
+        Later we will connect VINN to a real
+        authentication/backend system.
       */
 
-      alert("Login button works!");
+      setTimeout(function () {
+
+        loginButton.classList.remove("loading");
+
+        /*
+          When the dashboard is created,
+          this will open dashboard.html.
+        */
+
+        window.location.href = "dashboard.html";
+
+      }, 1200);
+
+    });
+
+
+    /* =========================
+       FORGOT PASSWORD
+    ========================== */
+
+    function forgotPassword(event) {
+
+      event.preventDefault();
+
+      alert(
+        "Password recovery will be connected later."
+      );
 
     }
 
   </script>
 
 </body>
-  </html>
+          </html>
+        
+    
