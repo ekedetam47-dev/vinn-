@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>VINN | Petrol Station Management</title>
+  <meta name="description" content="VINN petrol station management - splash loading screen">
 
   <style>
     * {
@@ -60,6 +61,9 @@
 
       animation:
         logoFloat 3s ease-in-out infinite;
+
+      /* ensure the logo animation doesn't cause layout shifts */
+      transform-origin: center;
     }
 
     /* VINN text */
@@ -295,6 +299,17 @@
         letter-spacing: 1px;
       }
     }
+
+    /* Respect user's motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+      .progress-bar {
+        width: 100% !important; /* show full progress immediately */
+      }
+    }
   </style>
 </head>
 
@@ -303,7 +318,7 @@
 
   <!-- SPLASH SCREEN -->
 
-  <main class="splash" id="splash">
+  <main class="splash" id="splash" role="region" aria-label="Loading VINN">
 
     <!-- Logo + Brand -->
 
@@ -315,6 +330,9 @@
         class="logo"
         src="c50c620324b6e91563816604f0eb9dd0.jpg"
         alt="VINN Fuel Station Logo"
+        width="190" height="190"
+        decoding="async"
+        loading="eager"
       >
 
       <!-- Brand name beside image -->
@@ -336,18 +354,18 @@
 
     <div class="loading">
 
-      <div class="loading-text">
+      <div class="loading-text" aria-live="polite">
         Loading VINN
       </div>
 
       <div class="progress">
 
-        <div class="progress-bar"></div>
+        <div class="progress-bar" aria-hidden="true"></div>
 
       </div>
 
 
-      <div class="dots">
+      <div class="dots" aria-hidden="true">
 
         <i></i>
         <i></i>
@@ -360,12 +378,44 @@
   </main>
 
 
+<noscript>
+  <meta http-equiv="refresh" content="0;url=login.html">
+  <div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:white;">
+    <p>JavaScript is disabled. <a href="login.html">Continue to login</a></p>
+  </div>
+</noscript>
+
 <script>
-  setTimeout(function () {
+  (function () {
+    var splash = document.getElementById('splash');
+    var totalMs = 10000; // must match the progress animation duration
+    var fadeMs = 800; // must match the .fade-out animation duration
+    var fadeStart = Math.max(0, totalMs - fadeMs - 200);
 
-    window.location.href = "login.html";
+    // If user prefers reduced motion, skip animations and redirect immediately
+    var mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery && mediaQuery.matches) {
+      // Go directly to login
+      window.location.replace('login.html');
+      return;
+    }
 
-  }, 10000);
+    // Start fade just before redirect so user sees exit animation
+    var fadeTimeout = setTimeout(function () {
+      if (splash) splash.classList.add('fade-out');
+    }, fadeStart);
+
+    var redirectTimeout = setTimeout(function () {
+      // Use replace so the splash isn't kept in session history
+      window.location.replace('login.html');
+    }, totalMs);
+
+    // Cleanup if the page is unloaded early
+    window.addEventListener('pagehide', function () {
+      clearTimeout(fadeTimeout);
+      clearTimeout(redirectTimeout);
+    });
+  })();
 </script>
 
 </body>
